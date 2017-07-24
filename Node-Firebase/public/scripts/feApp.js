@@ -68,7 +68,7 @@ var NodeFirebaseAPI = function (app) {
 	this.ajaxAPIcallHandler = function (refStr, method, payload, callback) {
 		if (!refStr || typeof refStr != 'string' || !method || typeof method != 'string') return false;
 
-		var url = '//localhost:8080/'
+		var url = '/'
 		switch (method) {
 			case ("PUT") :
 			default :
