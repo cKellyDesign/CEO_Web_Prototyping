@@ -10,11 +10,10 @@ var options = { root: __dirname + "/"} ;
 app.set('port', 8080);
 app.set('case sensitive routing', false);
 
-
+var DEBUG = true;
 
 app.get('/', function(req, res) {
-
-    res.send('<h1>Hello World</h1>');
+    res.sendFile('./public/index.html');
 });
 
 // todo - make this secure
@@ -27,6 +26,16 @@ admin.initializeApp({
 
 var FirebaseApp = admin.app();
 var FirebaseDB  = admin.database(FirebaseApp);
+
+var ref = FirebaseDB.ref();
+ref.once("value").then(function (snapshot) {
+	if (DEBUG) console.log(snapshot.val());	
+
+	// var newVal = (Math.floor(Math.random() * 100));
+	// ref.set({ sliderValue : newVal });
+	// if (DEBUG) console.log('new Value ', newVal);
+});
+
 
 
 // Listen to Port
