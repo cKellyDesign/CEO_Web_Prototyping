@@ -10,7 +10,7 @@ var options = { root: __dirname + "/"} ;
 app.set('port', 8080);
 app.set('case sensitive routing', false);
 
-var DEBUG = true;
+var DEBUG = false;
 
 // FIREBASE SETUP
 // todo - make this secure
