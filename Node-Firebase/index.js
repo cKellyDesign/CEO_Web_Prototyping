@@ -12,9 +12,18 @@ app.set('case sensitive routing', false);
 
 var DEBUG = true;
 
+// Routes Setup
 app.get('/', function(req, res) {
-    res.sendFile('./public/index.html');
+    res.sendFile('public/index.html', options, function (err) {
+    	if (err) {
+    		if (DEBUG) console.log(err);
+    		res.send(err.status);
+    	}
+    });
 });
+
+// Static Routes
+app.use('/scripts', express.static(path.join(__dirname, '/public/scripts')));
 
 // todo - make this secure
 var serviceAccount = require("./keys.json");
