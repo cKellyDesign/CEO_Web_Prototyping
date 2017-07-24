@@ -1,3 +1,5 @@
+# Import file "CompanionApp_v1.2"
+
 # The Proto Should:
 # click between home and article screens
 # tap or swipe between stats tabs
