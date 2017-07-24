@@ -12,19 +12,7 @@ app.set('case sensitive routing', false);
 
 var DEBUG = true;
 
-// Routes Setup
-app.get('/', function(req, res) {
-    res.sendFile('public/index.html', options, function (err) {
-    	if (err) {
-    		if (DEBUG) console.log(err);
-    		res.send(err.status);
-    	}
-    });
-});
-
-// Static Routes
-app.use('/scripts', express.static(path.join(__dirname, '/public/scripts')));
-
+// FIREBASE SETUP
 // todo - make this secure
 var serviceAccount = require("./keys.json");
 
@@ -38,12 +26,40 @@ var FirebaseDB  = admin.database(FirebaseApp);
 
 var ref = FirebaseDB.ref();
 ref.once("value").then(function (snapshot) {
-	if (DEBUG) console.log(snapshot.val());	
+	if (DEBUG) console.log('DB Connected!');	
 
 	// var newVal = (Math.floor(Math.random() * 100));
 	// ref.set({ sliderValue : newVal });
 	// if (DEBUG) console.log('new Value ', newVal);
 });
+
+
+
+
+// ROUTES SETUP
+app.get('/', function(req, res) {
+    res.sendFile('public/index.html', options, function (err) {
+    	if (err) {
+    		if (DEBUG) console.log(err);
+    		res.send(err.status);
+    	}
+    });
+});
+
+
+app.put('/update', function (req, res) {
+	var key = (Object.keys(req.query))[0],
+		val = req.query[key];
+
+	var query = req.query
+	ref.set(query);
+
+	console.log('update - key: ' + key + '; val: ' + val);
+	res.send(200);
+});
+
+// Static Routes
+app.use('/scripts', express.static(path.join(__dirname, '/public/scripts')));
 
 
 
