@@ -13,19 +13,19 @@ activeState = 'Home'
 for layer in Framer.CurrentContext.layers
 	artboards.push(layer) if layer._info.kind == "artboard"
 	
-globalNav = companion.Action_Buttons_2.copy()
+# globalNav = companion.Action_Buttons_2.copy()
+# statsNav = companion.Segmented_Control_4.copy()
 
-statsNav = companion.Segmented_Control_4.copy()
-statsNav.states.on = 
-	visible: true, opacity: 1
-statsNav.states.off =
-	visible: false, opacity: 1
-statsNav.animate("off")
+# statsNav.states.on = 
+# 	visible: true, opacity: 1
+# statsNav.states.off =
+# 	visible: false, opacity: 1
+# statsNav.animate("off")
 
 
 for artboard in artboards
 	for child in artboard.children
-		child.destroy() if child.name.indexOf("Action_Buttons_2") isnt -1
+		child.destroy() if child.name.indexOf("GlobalNav") isnt -1
 		child.destroy() if child.name.indexOf("Segmented") isnt -1
 	artboard.point = {x:0,y:0} 
 # 	console.log artboard.props
