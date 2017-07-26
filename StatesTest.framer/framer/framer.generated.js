@@ -2277,11 +2277,11 @@ window.__imported__["CompanionApp_v1.2@2x/layers.json.js"] = [
 	}
 ]
 if (DeviceComponent) {DeviceComponent.Devices["iphone-6-silver"].deviceImageJP2 = false};
-if (window.Framer) {window.Framer.Defaults.DeviceView = {"deviceScale":1,"selectedHand":"","deviceType":"fullscreen","contentScale":1,"hideBezel":true,"orientation":0};
+if (window.Framer) {window.Framer.Defaults.DeviceView = {"deviceScale":"fit","selectedHand":"","deviceType":"apple-iphone-6s-space-gray","contentScale":1,"hideBezel":true,"orientation":0};
 }
-if (window.Framer) {window.Framer.Defaults.DeviceComponent = {"deviceScale":1,"selectedHand":"","deviceType":"fullscreen","contentScale":1,"hideBezel":true,"orientation":0};
+if (window.Framer) {window.Framer.Defaults.DeviceComponent = {"deviceScale":"fit","selectedHand":"","deviceType":"apple-iphone-6s-space-gray","contentScale":1,"hideBezel":true,"orientation":0};
 }
-window.FramerStudioInfo = {"deviceImagesUrl":"\/_server\/resources\/DeviceImages","documentTitle":"StatesTest.framer"};
+window.FramerStudioInfo = {"deviceImagesUrl":"\/\/resources.framerjs.com\/static\/DeviceResources","documentTitle":"StatesTest.framer"};
 
 Framer.Device = new Framer.DeviceView();
 Framer.Device.setupContext();
