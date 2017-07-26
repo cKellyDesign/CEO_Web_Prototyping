@@ -24,8 +24,7 @@ companion._Bias_a_BG.animate("off")
 companion._Topics_a_BG.animate("off")
 statsNav.animate("off") if activeState == 'Home'
 
-companion.BreakdownCTA.states = onOffStates
-companion.BreakdownCTA.animate("off")
+companion.BreakdownCTA.opacity = 0
 
 globalNav.centerX()
 globalNav.y = Align.bottom()
@@ -80,11 +79,19 @@ switchToScreen = (screen) ->
 # companion.BreakdownCTA.states.on =
 # 	visible: true
 
+
+companion.BreakdownCTA.states.tapped = y: companion.BreakdownCTA.y, opacity: 1
+companion.BreakdownCTA.states.untapped = y: companion.BreakdownCTA.y + 100, opacity: 0
+companion.BreakdownCTA.animate("untapped")
+
+# companion.BreakdownCTA.animate("off")
 companion.HomeCube.states.tapped = y : companion.HomeCube.y - 100
+companion.TapIndicators.states.tapped = y : companion.TapIndicators.y - 100
 
 companion.HomeCube.onClick ->
 	companion.HomeCube.stateCycle("tapped", "previous")
-	companion.BreakdownCTA.stateCycle("on", "previous")
+	companion.BreakdownCTA.stateCycle("tapped", "previous")
+	companion.TapIndicators.stateCycle("tapped", "previous")
 	
 
 
