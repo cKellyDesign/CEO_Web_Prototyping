@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.9/dist/aframe-orbit-controls-component.min.js"></script>
+
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="skin" src="img/equirectangular image.png">
+      </a-assets>
+
+      <a-box
+        id="box"
+        src="#skin"
+        width="1"
+        height="1"
+        depth="1"
+        position="5 0 5"
+        rotation="0 0 0">
+          <!-- <a-animation
+            attribute="rotation"
+            begin="click"
+            repeat="indefinite"
+            to="0 360 0">
+          </a-animation> -->
+      </a-box>
+
+      <a-event name="mouseenter" scale "4 1 6"></a-event>
+      <a-camera
+        orbit-controls="
+            autoRotate: false;
+            target: #box;
+            enableDamping: true;
+            dampingFactor: 0.125;
+            rotateSpeed:0.25;
+            minDistance:1.5;
+            maxDistance:100;">
+          <!-- <a-cursor color="#ff0000"></a-cursor> -->
+        </a-camera>
+
+      <a-sky color="#000000"></a-sky>
+      <a-light type="ambient" color="#ECECEC"></a-light>
+    </a-scene>
+  </body>
+</html>
