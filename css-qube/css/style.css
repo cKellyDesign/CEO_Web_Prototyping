@@ -48,7 +48,6 @@ body {
 .cube > div {
   overflow: hidden;
   position: absolute;
-  opacity: 0.9;
   height: 500px;
   width: 500px;
   background-image: url("http://jordizle.com/demo/376/3d-interactive-cube-with-rotating-sides-using-css3-and-javascript/assets/img/cube/blank.png");
@@ -168,15 +167,17 @@ object:hover {
   background: url('/img/articleScreen_biasRight.png') center center no-repeat;
   background-size: cover;
 }
-/* #saveSkip {
- background: url('/img/sourceScreen_center.png') center center no-repeat;
+ #saveSkip {
+ /*background: url('/img/sourceScreen_center.png') center center no-repeat;*/
   background-size: cover;
 }
-#bottom {
-  background: url('/img/sourceScreen_center.png') center center no-repeat;
-  background-size: cover;
-}*/
-
+#base {
+  background-image: none;
+  background-color: black;
+}
+.viewport {
+  margin-top: 120px;
+}
 .cube-image { 
   display: none;
 }

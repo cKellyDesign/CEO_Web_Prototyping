@@ -115,8 +115,8 @@ function Viewport(data) {
   this.mouseY = 0;
   this.distanceX = 0;
   this.distanceY = 0;
-  this.positionX = 1122;
-  this.positionY = 136;
+  this.positionX = data.positionX || 0;
+  this.positionY = data.positionY || 0;
   this.torqueX = 0;
   this.torqueY = 0;
 
@@ -281,14 +281,7 @@ this.element.style[userPrefix.js + 'Transform'] = 'rotateX(' + this.positionY + 
   }
 
 }
-var viewport = new Viewport({
-  element: document.getElementsByClassName('cube')[0],
-  fps: 20,
-  sensivity: .1,
-  sensivityFade: .93,
-  speed: 2,
-  touchSensivity: 1.5
-});
+
 
 function Cube(data) {
   var self = this;
@@ -302,6 +295,7 @@ function Cube(data) {
   });
   this.viewport.on('upsideDown', function(obj) {
     self.upsideDown(obj);
+    console.log('viewport updside down!!!');
   });
   this.viewport.on('sideChange', function() {
     self.sideChange();
@@ -337,7 +331,39 @@ Cube.prototype.sideChange = function() {
 
 }
 
-new Cube({
+
+var viewport = new Viewport({
+  element: document.getElementsByClassName('cube')[0],
+  fps: 20,
+  sensivity: .1,
+  sensivityFade: .93,
+  speed: 1,
+  touchSensivity: 1.5,
+  positionX: -45,
+  positionY: -45
+});
+
+var cube = new Cube({
   viewport: viewport,
   element: document.getElementsByClassName('cube')[0]
 });
+
+
+document.getElementById('top').addEventListener('click', function (e) {
+  console.log('top click');
+});
+document.getElementById('center').addEventListener('click', function (e) {
+  console.log('center click')
+});
+document.getElementById('left').addEventListener('click', function (e) {
+  console.log('left click')
+});
+document.getElementById('right').addEventListener('click', function (e) {
+  console.log('right click')
+});
+document.getElementById('saveSkip').addEventListener('click', function (e) {
+  console.log('saveSkip click')
+});
+
+
+
