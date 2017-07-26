@@ -24,7 +24,7 @@ companion._Topics_a_BG.states = onOffStates
 companion._Goals_a_BG.animate("off")
 companion._Bias_a_BG.animate("off")
 companion._Topics_a_BG.animate("off")
-statsNav.animate("off")
+statsNav.animate("off") if activeState == 'Home'
 
 companion.BreakdownCTA.states = onOffStates
 companion.BreakdownCTA.animate("off")
@@ -51,34 +51,37 @@ for screen in screens
 
 
 
-
 # Global Nav Event Listeners
-companion._HomeBtn.onClick (e, l) ->
+companion._HomeBtn.onClick (e, l) -> switchToScreen('Home')
+companion._ArticlesBtn.onClick (e, l) -> console.log 'article click! no page yet :)'
+companion._GoalsBtn.onClick (e, l) -> switchToScreen('Goals')
+companion._StatsBtn.onClick (e, l) -> switchToScreen('Bias')
+companion._SettingsBtn.onClick (e, l) -> console.log 'settings click! no page yet :)'
+
+companion._Goals_p_BG.onClick (e, l) ->
+	switchToScreen('Goals')
+	companion._Goals_a_BG.visible = true
+
+companion._Bias_p_BG.onClick ->
+	switchToScreen('Bias')
+	companion._Bias_a_BG.visible = true
+
+companion._Topics_p_BG.onClick ->
+	switchToScreen('Topics')
+	companion._Topics_a_BG.visible = true
+
+switchToScreen = (screen) ->
 	companion[activeState].animate("off")
-	statsNav.animate("off")
-	companion.Home.animate("on")
-	activeState = 'Home'
-
-companion._ArticlesBtn.onClick (e, l) ->
-	console.log 'article click! no page yet :)'
-
-companion._GoalsBtn.onClick (e, l) ->
-	companion[activeState].animate("off")
-	companion.Goals.animate("on")
-	statsNav.animate("on")
-	activeState = 'Goals'
-
-companion._StatsBtn.onClick (e, l) ->
-	companion[activeState].animate("off")
-	companion.Bias.animate("on")
-	statsNav.animate("on")
-	activeState = 'Bias'
-
-companion._SettingsBtn.onClick (e, l) ->
-	console.log 'settings click! no page yet :)'
-
-
-
+	companion[screen].animate("on")
+	activeState = screen
+	
+	if screen == 'Home'
+		statsNav.animate("off")
+	else
+		statsNav.animate("on")
+		companion._Goals_a_BG.visible = false
+		companion._Bias_a_BG.visible = false
+		companion._Topics_a_BG.visible = false
 
 
 
